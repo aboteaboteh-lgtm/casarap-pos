@@ -1,0 +1,203 @@
+body { font-family: 'Poppins', sans-serif; background: linear-gradient(135deg, #E0F7FA 0%, #FFF8E1 100%); min-height: 100vh; color: #333; }
+
+/* Theme Colors */
+:root {
+    --pos-blue: #0077BE; /* Tropical Ocean Blue */
+    --pos-yellow: #FFD300; /* Sunny Tropical Yellow */
+}
+
+.login-card { 
+    width: 100%; 
+    max-width: 400px; 
+    border-top: 6px solid var(--pos-yellow); /* Yellow accent on login */
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0 15px 35px rgba(0, 119, 190, 0.1);
+    background: rgba(255, 255, 255, 0.95);
+}
+
+.login-logo {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin: 0 auto 1rem auto;
+    display: block;
+    border: 3px solid var(--pos-yellow);
+}
+
+.receipt-logo {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 2px solid var(--pos-yellow);
+    margin-bottom: 10px;
+}
+
+.btn-primary {
+    background: linear-gradient(45deg, var(--pos-blue), #005c91);
+    border: none;
+    border-radius: 50px;
+    box-shadow: 0 4px 10px rgba(0, 119, 190, 0.3);
+    transition: all 0.3s ease;
+}
+.btn-primary:hover { 
+    background: linear-gradient(45deg, #005c91, var(--pos-blue));
+    transform: translateY(-1px);
+    box-shadow: 0 6px 15px rgba(0, 119, 190, 0.4);
+}
+
+.btn-warning {
+    background: linear-gradient(45deg, var(--pos-yellow), #ffc107);
+    border: none;
+    color: #333;
+    box-shadow: 0 4px 10px rgba(255, 211, 0, 0.3);
+    transition: all 0.3s ease;
+}
+.btn-warning:hover {
+    background: linear-gradient(45deg, #ffc107, var(--pos-yellow));
+    transform: translateY(-1px);
+}
+
+.pos-navbar { 
+    background: linear-gradient(90deg, var(--pos-blue), #005c91) !important;
+    box-shadow: 0 4px 12px rgba(0, 119, 190, 0.3);
+}
+
+.product-card { 
+    cursor: pointer; 
+    transition: 0.2s; 
+    border: none; 
+    background-color: #fff;
+    border-radius: 15px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+    overflow: hidden;
+}
+.product-card:hover { 
+    transform: translateY(-5px);
+    box-shadow: 0 12px 24px rgba(0, 119, 190, 0.15);
+}
+.product-img {
+    height: 140px;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+.product-card:hover .product-img {
+    transform: scale(1.08);
+}
+.vh-100 { height: 100vh; }
+
+/* Receipt Styling */
+#receipt-content {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 0.9rem;
+}
+.receipt-header {
+    text-align: center;
+    margin-bottom: 10px;
+    border-bottom: 1px dashed #333;
+    padding-bottom: 10px;
+}
+.receipt-footer {
+    border-top: 1px dashed #333;
+    padding-top: 10px;
+    margin-top: 10px;
+    text-align: center;
+}
+
+/* Cart Item Styling */
+.cart-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem 0.25rem;
+    border-bottom: 1px solid #eee;
+}
+.cart-item-details { flex-grow: 1; }
+.cart-item-controls { display: flex; align-items: center; }
+.cart-item-controls button {
+    width: 28px;
+    height: 28px;
+    line-height: 1;
+    font-size: 1rem;
+    margin: 0 0.25rem;
+}
+.cart-item-qty {
+    min-width: 25px;
+    text-align: center;
+}
+.cart-scroll {
+    height: 60vh;
+}
+.cart-scroll::-webkit-scrollbar, 
+#category-tabs::-webkit-scrollbar {
+    height: 6px;
+    width: 6px;
+}
+.cart-scroll::-webkit-scrollbar-thumb, 
+#category-tabs::-webkit-scrollbar-thumb {
+    background: #ccc;
+    border-radius: 10px;
+}
+
+@media (max-width: 991.98px) {
+    .cart-scroll {
+        height: 50vh;
+    }
+}
+
+.btn-remove-item { color: #dc3545; }
+.btn-remove-item:hover { color: #a0202d; }
+
+/* Print Styling */
+@media print {
+    @page {
+        margin: 0;
+        size: auto;
+    }
+
+    body {
+        background: #fff !important;
+        margin: 0;
+        padding: 0;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    /* Hide everything except the receipt modal */
+    body > *:not(#receiptModal),
+    .modal-header,
+    .modal-footer,
+    .btn-close,
+    .modal-backdrop {
+        display: none !important;
+    }
+
+    #receiptModal {
+        display: block !important;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+    }
+
+    .modal-dialog {
+        margin: 0 auto !important;
+        max-width: 300px !important; /* Standard narrow receipt width */
+    }
+
+    .modal-content {
+        border: none !important;
+        box-shadow: none !important;
+    }
+
+    #receipt-content {
+        color: #000 !important;
+        font-size: 10pt;
+    }
+
+    .text-danger, .text-muted, .fw-bold {
+        color: #000 !important;
+    }
+}
